@@ -19,7 +19,7 @@ const {
 } = process.env;
 
 // Directory paths for static assets
-const DIST_DIR = path.join(__dirname, '../../dist');
+const DIST_DIR = path.join(__dirname, '../dist');
 const INDEX_FILE = path.join(DIST_DIR, 'index.html');
 
 // Middleware for static assets and JSON parsing
