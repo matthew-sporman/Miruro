@@ -243,6 +243,11 @@ export function Player({
   }
 
   async function fetchAndSetAnimeSource() {
+  if (!episodeId || episodeId === '0') {
+    console.warn('Player waiting for a valid episodeId...');
+    return;
+  }
+  
     try {
       const response = await fetchAnimeStreamingLinks(episodeId);
       const backupSource = response.sources.find(
