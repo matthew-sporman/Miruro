@@ -11,6 +11,9 @@
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write ."
   },
+  "overrides": {
+    "node-fetch": "2.6.7"
+  },
   "dependencies": {
     "@apollo/client": "^3.10.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -39,12 +42,12 @@
     "react-select": "^5.8.0",
     "styled-components": "^6.1.0",
     "swiper": "^11.0.7",
+    "tsx": "^4.20.6",
     "typescript": "^5.0.0",
     "uuid": "^9.0.1",
     "wrangler": "^3.52.0"
   },
   "devDependencies": {
-    "@types/bun": "latest",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/react-slick": "^0.23.13",
@@ -55,7 +58,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "5.x"
+    "vite": "^5.x"
   },
   "module": "index.ts",
   "peerDependencies": {

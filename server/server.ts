@@ -7,10 +7,10 @@ import bodyParser from 'body-parser';
 const app = express();
 
 // Environment Configuration
-const PORT = process.env.VITE_PORT || 5173;
+const PORT = process.env.PORT || 5173;
 const {
   VITE_CLIENT_ID: CLIENT_ID,
-  VITE_CLIENT_SECRET: CLIENT_SECRET,
+  CLIENT_SECRET,
   VITE_REDIRECT_URI: REDIRECT_URI,
 } = process.env;
 
