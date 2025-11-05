@@ -348,7 +348,7 @@ export async function fetchAnimeEpisodes(
   dub: boolean = false,
 ) {
   const params = new URLSearchParams({ provider, dub: dub ? 'true' : 'false' });
-  const url = `${BASE_URL}meta/anilist/episodes/${animeId}?${params.toString()}`;
+  const url = `${BASE_URL}anime/gogoanime/info/${animeId}?${params.toString()}`;
   const cacheKey = generateCacheKey(
     'animeEpisodes',
     animeId,
@@ -361,7 +361,7 @@ export async function fetchAnimeEpisodes(
 
 // Fetch Embedded Anime Episodes Servers
 export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
-  const url = `${BASE_URL}meta/anilist/servers/${episodeId}`;
+  const url = `${BASE_URL}anime/gogoanime/watch/${episodeId}`;
   const cacheKey = generateCacheKey('animeEmbeddedServers', episodeId);
 
   return fetchFromProxy(url, fetchAnimeEmbeddedEpisodesCache, cacheKey);
@@ -419,7 +419,7 @@ export async function fetchRecentEpisodes(
   });
 
   // Using the BASE_URL defined at the top of your file
-  const url = `${BASE_URL}meta/anilist/recent-episodes?${params.toString()}`;
+  const url = `${BASE_URL}anime/gogoanime/recent-episodes?${params.toString()}`;
   const cacheKey = generateCacheKey(
     'recentEpisodes',
     page.toString(),
