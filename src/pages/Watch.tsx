@@ -413,7 +413,7 @@ const Watch: React.FC = () => {
       if (!animeId) return;
       try {
         const isDub = language === 'dub';
-        const animeData = await fetchAnimeEpisodes(animeId, 'gogoanime', isDub);
+        const animeData = await fetchAnimeEpisodes(animeId, 'animepahe', isDub);
         if (isMounted && animeData) {
           const transformedEpisodes = animeData
             .filter((ep: any) => ep.id.includes('-episode-')) // TODO Continue excluding entries without '-episode-'

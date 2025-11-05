@@ -361,7 +361,7 @@ export async function fetchAnimeEpisodes(
 
 // Fetch Embedded Anime Episodes Servers
 export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
-  const url = `${BASE_URL}meta/anilist/servers/${episodeId}?provider=gogoanime`;
+  const url = `${BASE_URL}anime/animepahe/watch/${episodeId}`;
   const cacheKey = generateCacheKey('animeEmbeddedServers', episodeId);
 
   return fetchFromProxy(url, fetchAnimeEmbeddedEpisodesCache, cacheKey);
@@ -369,7 +369,7 @@ export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
 
 // Function to fetch anime streaming links
 export async function fetchAnimeStreamingLinks(episodeId: string) {
-  const url = `${BASE_URL}meta/anilist/watch/${episodeId}?provider=gogoanime`;
+  const url = `${BASE_URL}anime/animepahe/watch/${episodeId}`;
   const cacheKey = generateCacheKey('animeStreamingLinks', episodeId);
 
   return fetchFromProxy(url, videoSourcesCache, cacheKey);
