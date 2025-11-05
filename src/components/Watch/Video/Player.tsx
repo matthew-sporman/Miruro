@@ -106,15 +106,20 @@ export function Player({
   const { settings, setSettings } = useSettings();
   const { autoPlay, autoNext, autoSkip } = settings;
 
-  useEffect(() => {
-    setCurrentTime(parseFloat(localStorage.getItem('currentTime') || '0'));
+useEffect(() => {
+    setCurrentTime(parseFloat(localStorage.getItem('currentTime') || '0'));
+    if (episodeId && episodeId !== '0') {
+      console.warn(`FIX APPLIED: Valid episodeId [${episodeId}], fetching sources...`);
+      fetchAndSetAnimeSource();
+      fetchAndProcessSkipTimes();
+    } else {
+      console.warn(`FIX APPLIED: Invalid episodeId [${episodeId}], aborting fetch.`);
+    }
 
-    fetchAndSetAnimeSource();
-    fetchAndProcessSkipTimes();
-    return () => {
-      if (vttUrl) URL.revokeObjectURL(vttUrl);
-    };
-  }, [episodeId, malId, updateDownloadLink]);
+    return () => {
+      if (vttUrl) URL.revokeObjectURL(vttUrl);
+    };
+  }, [episodeId, malId, updateDownloadLink]);
 
   useEffect(() => {
     if (autoPlay && player.current) {
