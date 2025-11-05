@@ -215,8 +215,9 @@ export function Player({
   }
 
   async function fetchAndProcessSkipTimes() {
-    if (malId && episodeId) {
-      const episodeNumber = getEpisodeNumber(episodeId);
+   if (malId && episodeId && episodeId !== '0') {
+      const episodeNumber = getEpisodeNumber(episodeId);
+      if (episodeNumber === '0' || !episodeNumber) return;
       try {
         const response: FetchSkipTimesResponse = await fetchSkipTimes({
           malId: malId.toString(),
@@ -247,7 +248,7 @@ export function Player({
     console.warn('Player waiting for a valid episodeId...');
     return;
   }
-  
+
     try {
       const response = await fetchAnimeStreamingLinks(episodeId);
       const backupSource = response.sources.find(
@@ -271,6 +272,9 @@ export function Player({
   }
 
   function getEpisodeNumber(id: string): string {
+    if (!id || id === '0') {
+      return '0';
+    }
     const parts = id.split('-');
     return parts[parts.length - 1];
   }
