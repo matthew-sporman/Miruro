@@ -3,12 +3,8 @@ import axios from 'axios';
 import path from 'path';
 import os from 'os';
 import bodyParser from 'body-parser';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // Environment Configuration
 const PORT = process.env.PORT || 5173;
@@ -19,7 +15,7 @@ const {
 } = process.env;
 
 // Directory paths for static assets
-const DIST_DIR = path.join(__dirname, '../dist');
+const DIST_DIR = path.join(process.cwd(), 'dist');
 const INDEX_FILE = path.join(DIST_DIR, 'index.html');
 
 // Middleware for static assets and JSON parsing
