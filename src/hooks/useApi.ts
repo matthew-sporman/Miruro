@@ -361,7 +361,7 @@ export async function fetchAnimeEpisodes(
 
 // Fetch Embedded Anime Episodes Servers
 export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
-  const url = `${BASE_URL}anime/animefox/watch/${episodeId}`;
+  const url = `${BASE_URL}meta/anilist/servers/${episodeId}?provider=animefox`;
   const cacheKey = generateCacheKey('animeEmbeddedServers', episodeId);
 
   return fetchFromProxy(url, fetchAnimeEmbeddedEpisodesCache, cacheKey);
@@ -369,7 +369,7 @@ export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
 
 // Function to fetch anime streaming links
 export async function fetchAnimeStreamingLinks(episodeId: string) {
-  const url = `${BASE_URL}anime/animefox/watch/${episodeId}`;
+  const url = `${BASE_URL}meta/anilist/watch/${episodeId}?provider=animefox`;
   const cacheKey = generateCacheKey('animeStreamingLinks', episodeId);
 
   return fetchFromProxy(url, videoSourcesCache, cacheKey);
@@ -415,7 +415,7 @@ export async function fetchRecentEpisodes(
   const params = new URLSearchParams({
     page: page.toString(),
     perPage: perPage.toString(),
-    provider: provider, // Default to 'animefox' if no provider is specified
+    provider: provider, // Default to 'gogoanime' if no provider is specified
   });
 
   // Using the BASE_URL defined at the top of your file
