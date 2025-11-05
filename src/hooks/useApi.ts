@@ -237,7 +237,7 @@ export async function fetchAdvancedSearch(
 // Fetch Anime DATA Function
 export async function fetchAnimeData(
   animeId: string,
-  provider: string = 'gogoanime',
+  provider: string = 'animefox',
 ) {
   const params = new URLSearchParams({ provider });
   const url = `${BASE_URL}meta/anilist/data/${animeId}?${params.toString()}`;
@@ -249,7 +249,7 @@ export async function fetchAnimeData(
 // Fetch Anime INFO Function
 export async function fetchAnimeInfo(
   animeId: string,
-  provider: string = 'gogoanime',
+  provider: string = 'animefox',
 ) {
   const params = new URLSearchParams({ provider });
   const url = `${BASE_URL}meta/anilist/info/${animeId}?${params.toString()}`;
@@ -344,7 +344,7 @@ export const fetchUpcomingSeasons = (page: number, perPage: number) =>
 // Fetch Anime Episodes Function
 export async function fetchAnimeEpisodes(
   animeId: string,
-  provider: string = 'gogoanime',
+  provider: string = 'animefox',
   dub: boolean = false,
 ) {
   const params = new URLSearchParams({ provider, dub: dub ? 'true' : 'false' });
@@ -361,7 +361,7 @@ export async function fetchAnimeEpisodes(
 
 // Fetch Embedded Anime Episodes Servers
 export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
-  const url = `${BASE_URL}anime/animepahe/watch/${episodeId}`;
+  const url = `${BASE_URL}anime/animefox/watch/${episodeId}`;
   const cacheKey = generateCacheKey('animeEmbeddedServers', episodeId);
 
   return fetchFromProxy(url, fetchAnimeEmbeddedEpisodesCache, cacheKey);
@@ -369,7 +369,7 @@ export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
 
 // Function to fetch anime streaming links
 export async function fetchAnimeStreamingLinks(episodeId: string) {
-  const url = `${BASE_URL}anime/animepahe/watch/${episodeId}`;
+  const url = `${BASE_URL}anime/animefox/watch/${episodeId}`;
   const cacheKey = generateCacheKey('animeStreamingLinks', episodeId);
 
   return fetchFromProxy(url, videoSourcesCache, cacheKey);
@@ -409,13 +409,13 @@ export async function fetchSkipTimes({
 export async function fetchRecentEpisodes(
   page: number = 1,
   perPage: number = 18,
-  provider: string = 'gogoanime',
+  provider: string = 'animefox',
 ) {
   // Construct the URL with query parameters for fetching recent episodes
   const params = new URLSearchParams({
     page: page.toString(),
     perPage: perPage.toString(),
-    provider: provider, // Default to 'gogoanime' if no provider is specified
+    provider: provider, // Default to 'animefox' if no provider is specified
   });
 
   // Using the BASE_URL defined at the top of your file
