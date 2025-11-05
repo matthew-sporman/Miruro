@@ -132,6 +132,51 @@ const Home = () => {
       Upcoming: true,
     },
   });
+  
+  useEffect(() => {
+    // This function runs when the component loads
+    const handleAuthCallback = async () => {
+      // 1. Check the URL for a 'code' parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+
+      if (code) {
+        try {
+          // 2. A code exists! Send it to our backend server.
+          const response = await fetch('/api/exchange-token', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ code }),
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to exchange token');
+          }
+
+          const data = await response.json();
+          const accessToken = data.accessToken;
+
+          // 3. We got the token! Save it to localStorage.
+          if (accessToken) {
+            localStorage.setItem('anilist-token', accessToken);
+            console.log('AniList token saved!');
+          }
+
+          // 4. Clean up the URL by redirecting back to the homepage without the code.
+          window.location.href = '/';
+
+        } catch (error) {
+          console.error('Error during token exchange:', error);
+          // Also clean up the URL on failure
+          window.location.href = '/';
+        }
+      }
+    };
+
+    handleAuthCallback();
+  }, []); // The empty array [] means this runs only ONCE when the page loads.
 
   useEffect(() => {
     const handleResize = () => {
