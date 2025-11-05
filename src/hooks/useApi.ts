@@ -369,7 +369,7 @@ export async function fetchAnimeEmbeddedEpisodes(episodeId: string) {
 
 // Function to fetch anime streaming links
 export async function fetchAnimeStreamingLinks(episodeId: string) {
-  const url = `${BASE_URL}meta/anilist/watch/${episodeId}`;
+  const url = `${BASE_URL}anime/gogoanime/watch/${episodeId}`;
   const cacheKey = generateCacheKey('animeStreamingLinks', episodeId);
 
   return fetchFromProxy(url, videoSourcesCache, cacheKey);
